@@ -52,13 +52,15 @@ export const Link = styled.a`
   color: inherit;
 `
 
+const getListSize = length => {
+}
 export const List = styled.ul`
+  font-size: ${props => props.children.length < 6 ? '75%' : '50%'};
   list-style: none;
   padding: 0;
 `
 
 export const Item = styled.li`
-  font-size: 75%;
   &::before {
     content: '- ';
   }
