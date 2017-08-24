@@ -2,17 +2,16 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
-const headingColor = props => props.level === 1 ? ({
-  padding: '8px',
-  color: 'black',
-  backgroundColor: 'white'
+const headingStyle = props => props.level === 1 ? ({
+  fontSize: '150%',
+  fontWeight: 'bold'
 }) : null
 
 export const Heading = styled.h1`
   font-size: inherit;
   font-weight: inherit;
   margin: 0;
-  ${headingColor}
+  ${headingStyle}
 `
 
 export const Image = styled.div`
