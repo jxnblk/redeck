@@ -27,7 +27,7 @@ import { dec, inc } from './src/updaters'
 
 browser()
 
-test('Provider renders', t => {
+test.skip('Provider renders', t => {
   const a = render(<Provider />).toJSON()
   t.snapshot(a)
 })
@@ -54,6 +54,7 @@ test('Markdown renders', t => {
 test('Keyboard renders', t => {
   const a = render(
     <Provider>
+      Keyboard
       <Keyboard />
     </Provider>
   ).toJSON()
@@ -63,6 +64,7 @@ test('Keyboard renders', t => {
 test('Hash renders', t => {
   const a = render(
     <Provider>
+      Hash
       <Hash />
     </Provider>
   ).toJSON()

@@ -1,5 +1,4 @@
 import React from 'react'
-import XRay from 'react-x-ray'
 import md from 'raw-loader!./deck.md'
 import {
   Provider,
@@ -10,29 +9,36 @@ import {
   Hash,
   SlideList,
   theme
-} from 'redeck'
+} from '../src'
 
 import Footer from './Footer'
 
 const slides = md.split('---\n')
   .filter(n => n.length)
 
+console.log(slides)
+
 const App = props => (
-  <Provider theme={theme}>
-    <Carousel>
-      {slides.map(slide => (
-        <Slide key={slide}>
-          <Markdown>
-            {slide}
-          </Markdown>
-        </Slide>
-      ))}
-    </Carousel>
-    <Keyboard />
-    <Hash />
-    <SlideList slides={slides} />
-    <Footer />
-  </Provider>
+  <React.Fragment>
+    <div>
+      <Provider theme={theme}>
+        <Carousel>
+          {slides.map(slide => (
+            <Slide key={slide}>
+              <Markdown>
+                {slide}
+              </Markdown>
+            </Slide>
+          ))}
+        </Carousel>
+        <Keyboard />
+        <Hash />
+        <SlideList slides={slides} />
+        <Footer />
+      </Provider>
+    </div>
+  </React.Fragment>
 )
+// <Keyboard />
 
 export default App

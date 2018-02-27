@@ -1,9 +1,8 @@
 import React from 'react'
-import { connect } from 'refunk'
+import connect from 'refunk'
 import {
   dec,
   inc,
-  toggleXRay
 } from './updaters'
 
 class Keyboard extends React.Component {
@@ -43,9 +42,6 @@ class Keyboard extends React.Component {
         case '0':
           update(state => ({ index: 0 }))
           break
-        case 'x':
-          update(toggleXRay)
-          break
       }
     }
   }
@@ -63,8 +59,4 @@ class Keyboard extends React.Component {
   }
 }
 
-const map = state => ({
-  index: state.index
-})
-
-export default connect(map)(Keyboard)
+export default connect(Keyboard)

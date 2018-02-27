@@ -1,13 +1,13 @@
 import React from 'react'
-import { connect } from 'refunk'
+import connect from 'refunk'
 import styled from 'styled-components'
 
 const Root = styled.div`
   overflow: hidden;
-  @media print {
-    overflow: visible;
-  }
 `
+// @media print {
+//     overflow: visible;
+//  }
 
 const Inner = styled.div`
   display: flex;
@@ -24,15 +24,18 @@ const Inner = styled.div`
   }
 `
 
-const Carousel = props => (
+const Carousel = (({
+  index,
+  children
+}) => (
   <Root>
     <Inner
-      {...props}
-      length={props.children.length}
-    />
+      index={index}
+      length={children.length}
+    >
+      {children}
+    </Inner>
   </Root>
-)
+))
 
-const map = state => ({ index: state.index })
-
-export default connect(map)(Carousel)
+export default Carousel

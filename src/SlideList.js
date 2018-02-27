@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'refunk'
+import connect from 'refunk'
 import styled from 'styled-components'
 import {
   dec,
@@ -71,4 +71,4 @@ List.defaultProps = {
   update: () => {}
 }
 
-export default connect()(List)
+export default connect(List)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'refunk'
+import connect from 'refunk'
 
 class Hash extends React.Component {
   componentDidMount () {
@@ -22,6 +22,4 @@ class Hash extends React.Component {
   }
 }
 
-const map = state => ({ index: state.index })
-
-export default connect(map)(Hash)
+export default connect(Hash)
