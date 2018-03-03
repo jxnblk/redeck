@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'refunk'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Root = styled.div`
@@ -33,6 +33,9 @@ const Carousel = props => (
   </Root>
 )
 
-const map = state => ({ index: state.index })
+Carousel.propTypes = {
+  index: PropTypes.number.isRequired,
+  length: PropTypes.number.isRequired,
+}
 
-export default connect(map)(Carousel)
+export default Carousel

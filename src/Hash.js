@@ -1,7 +1,12 @@
 import React from 'react'
-import { connect } from 'refunk'
+import PropTypes from 'prop-types'
 
 class Hash extends React.Component {
+  static propTypes = {
+    update: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
+  }
+
   componentDidMount () {
     const { update } = this.props
     const { hash } = window.location
@@ -22,6 +27,4 @@ class Hash extends React.Component {
   }
 }
 
-const map = state => ({ index: state.index })
-
-export default connect(map)(Hash)
+export default Hash

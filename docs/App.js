@@ -1,16 +1,16 @@
 import React from 'react'
-import XRay from 'react-x-ray'
+import Refunk from 'refunk/component'
+import { ThemeProvider } from 'styled-components'
+import { Markdown } from '@compositor/markdown'
 import md from 'raw-loader!./deck.md'
 import {
-  Provider,
   Carousel,
   Slide,
-  Markdown,
   Keyboard,
   Hash,
   SlideList,
   theme
-} from 'redeck'
+} from '../src'
 
 import Footer from './Footer'
 
@@ -18,21 +18,43 @@ const slides = md.split('---\n')
   .filter(n => n.length)
 
 const App = props => (
-  <Provider theme={theme}>
-    <Carousel>
-      {slides.map(slide => (
-        <Slide key={slide}>
-          <Markdown>
-            {slide}
-          </Markdown>
-        </Slide>
-      ))}
-    </Carousel>
-    <Keyboard />
-    <Hash />
-    <SlideList slides={slides} />
-    <Footer />
-  </Provider>
+  <Refunk
+    index={0}
+    render={({
+      update,
+      index
+    }) => (
+      <ThemeProvider theme={theme}>
+        <React.Fragment>
+          <Carousel
+            index={index}
+            length={slides.length}
+          >
+            {slides.map(slide => (
+              <Slide key={slide}>
+                <Markdown
+                  text={slide}
+                />
+              </Slide>
+            ))}
+          </Carousel>
+          <Keyboard
+            update={update}
+            index={index}
+          />
+          <Hash
+            update={update}
+            index={index}
+          />
+          <SlideList
+            update={update}
+            slides={slides}
+          />
+          <Footer />
+        </React.Fragment>
+      </ThemeProvider>
+    )}
+  />
 )
 
 export default App
