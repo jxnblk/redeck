@@ -4,8 +4,8 @@ import { dec, inc } from './updaters'
 
 class Keyboard extends React.Component {
   static propTypes = {
-    update: PropTypes.func.isRequire,
-    index: PropTypes.number.isRequire,
+    update: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
   }
 
   constructor () {

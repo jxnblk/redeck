@@ -11,8 +11,8 @@ const Root = styled.div`
 
 const Inner = styled.div`
   display: flex;
-  width: ${props => props.length * 100}vw;
-  transform: translateX(${props => (props.index % props.length) * -100}vw);
+  width: ${props => props.children.length * 100}vw;
+  transform: translateX(${props => (props.index % props.children.length) * -100}vw);
   transition-property: transform;
   transition-duration: .2s;
   transition-timing-function: ease-out;
@@ -35,7 +35,7 @@ const Carousel = props => (
 
 Carousel.propTypes = {
   index: PropTypes.number.isRequired,
-  length: PropTypes.number.isRequired,
+  // length: PropTypes.number.isRequired,
 }
 
 export default Carousel

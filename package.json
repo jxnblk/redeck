@@ -39,6 +39,8 @@
   },
   "dependencies": {
     "@compositor/markdown": "0.0.26",
+    "ok-css": "^1.0.0-0",
+    "ok-typography": "^1.0.0-0",
     "prop-types": "^15.6.1"
   },
   "ava": {

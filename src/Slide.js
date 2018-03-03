@@ -8,8 +8,6 @@ const Root = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  color: white;
-  background-color: black;
 
   @media screen and (min-width: 50em) {
     font-size: 4vw;
@@ -22,8 +20,6 @@ const Root = styled.div`
     page-break-before: always;
     page-break-after: always;
     page-break-inside: avoid;
-    color: white;
-    background-color: black;
   }
 `
 

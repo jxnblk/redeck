@@ -2,11 +2,10 @@
 # redeck
 
 React components for creating presentation decks from markdown
-built with [styled-components][sc], [react-markdown][rmd], and [refunk][rf]
+built with [@compositor/markdown][mdx] & [styled-components][sc].
 
 [sc]: https://styled-components.com
-[rmd]: https://github.com/rexxars/react-markdown
-[rf]: https://github.com/jxnblk/refunk
+[mdx]: https://github.com/c8r/markdown
 
 
 ```sh
@@ -19,9 +18,9 @@ Import redeck components to build your own markdown based slide deck.
 
 ```js
 import React from 'react'
-import markdown from 'raw-loader!./deck.md'
+import Refunk from 'refunk/component'
+import src from 'raw-loader!./deck.md'
 import {
-  Provider,
   Carousel,
   Slide,
   Markdown,
@@ -30,31 +29,36 @@ import {
 } from 'redeck'
 
 // Split a single markdown file or use multiple files
-const slides = md.split('---\n')
+const slides = src.split('---\n')
   .filter(n => n.length)
 
 const App = props => (
-  <Provider>
-    <Carousel>
-      {slides.map(slide => (
-        <Slide key={slide}>
-          <Markdown>
-            {slide}
-          </Markdown>
-        </Slide>
-      ))}
-    </Carousel>
-    <Keyboard />
-  </Provider>
+  <Refunk
+    index={0}
+    render={({
+      update,
+      index,
+    }) => (
+      <React.Fragment>
+        <Carousel index={index}>
+          {slides.map(slide => (
+            <Slide key={slide}>
+              <Markdown
+                text={slide}
+              />
+            </Slide>
+          ))}
+        </Carousel>
+        <Keyboard
+          update={update}
+          index={index}
+        />
+      </React.Fragment>
+    )}
+  />
 )
 
 export default App
 ```
-
-### App Setup
-
-Use [Create React App][cra] or any other React application setup
-
-[cra]: https://github.com/facebookincubator/create-react-app
 
 MIT License

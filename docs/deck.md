@@ -23,14 +23,8 @@ React components for creating presentation decks from markdown
 
 ---
 
-- List with
-- Two
-- Three
-- Four
-- Five
-- Six
-- Seven
-- Eight
-- Nine
-- Ten
+![avatar](http://jxnblk.com/avatar.png)
 
+---
+
+<img src='http://jxnblk.com/avatar.png' width='128' height='128' />

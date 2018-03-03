@@ -1,18 +1,22 @@
 import React from 'react'
 import Refunk from 'refunk/component'
 import { ThemeProvider } from 'styled-components'
-import { Markdown } from '@compositor/markdown'
+import CSS from 'ok-css'
+import Typography from 'ok-typography'
 import md from 'raw-loader!./deck.md'
 import {
   Carousel,
   Slide,
+  Markdown,
   Keyboard,
   Hash,
   SlideList,
-  theme
 } from '../src'
 
+import Head from './Head'
 import Footer from './Footer'
+
+const theme = {}
 
 const slides = md.split('---\n')
   .filter(n => n.length)
@@ -24,35 +28,38 @@ const App = props => (
       update,
       index
     }) => (
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <Carousel
-            index={index}
-            length={slides.length}
-          >
-            {slides.map(slide => (
-              <Slide key={slide}>
-                <Markdown
-                  text={slide}
-                />
-              </Slide>
-            ))}
-          </Carousel>
-          <Keyboard
-            update={update}
-            index={index}
-          />
-          <Hash
-            update={update}
-            index={index}
-          />
-          <SlideList
-            update={update}
-            slides={slides}
-          />
-          <Footer />
-        </React.Fragment>
-      </ThemeProvider>
+      <React.Fragment>
+        <Head />
+        <ThemeProvider theme={theme}>
+          <React.Fragment>
+            <CSS />
+            <Typography>
+              <Carousel index={index}>
+                {slides.map(slide => (
+                  <Slide key={slide}>
+                    <Markdown
+                      text={slide}
+                    />
+                  </Slide>
+                ))}
+              </Carousel>
+              <Keyboard
+                update={update}
+                index={index}
+              />
+              <Hash
+                update={update}
+                index={index}
+              />
+              <SlideList
+                update={update}
+                slides={slides}
+              />
+              <Footer />
+            </Typography>
+          </React.Fragment>
+        </ThemeProvider>
+      </React.Fragment>
     )}
   />
 )
