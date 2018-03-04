@@ -35,7 +35,6 @@ const Carousel = props => (
 
 Carousel.propTypes = {
   index: PropTypes.number.isRequired,
-  // length: PropTypes.number.isRequired,
 }
 
 export default Carousel
