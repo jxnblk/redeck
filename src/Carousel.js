@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'refunk'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Root = styled.div`
@@ -11,8 +11,8 @@ const Root = styled.div`
 
 const Inner = styled.div`
   display: flex;
-  width: ${props => props.length * 100}vw;
-  transform: translateX(${props => (props.index % props.length) * -100}vw);
+  width: ${props => props.children.length * 100}vw;
+  transform: translateX(${props => (props.index % props.children.length) * -100}vw);
   transition-property: transform;
   transition-duration: .2s;
   transition-timing-function: ease-out;
@@ -33,6 +33,8 @@ const Carousel = props => (
   </Root>
 )
 
-const map = state => ({ index: state.index })
+Carousel.propTypes = {
+  index: PropTypes.number.isRequired,
+}
 
-export default connect(map)(Carousel)
+export default Carousel

@@ -1,12 +1,13 @@
 import React from 'react'
-import { connect } from 'refunk'
-import {
-  dec,
-  inc,
-  toggleXRay
-} from './updaters'
+import PropTypes from 'prop-types'
+import { dec, inc } from './updaters'
 
 class Keyboard extends React.Component {
+  static propTypes = {
+    update: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
+  }
+
   constructor () {
     super()
 
@@ -63,8 +64,4 @@ class Keyboard extends React.Component {
   }
 }
 
-const map = state => ({
-  index: state.index
-})
-
-export default connect(map)(Keyboard)
+export default Keyboard

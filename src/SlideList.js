@@ -1,11 +1,7 @@
 import React from 'react'
-import { connect } from 'refunk'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {
-  dec,
-  inc,
-  toggleXRay
-} from './updaters'
+import { dec, inc } from './updaters'
 
 export const Root = styled.nav`
   padding: 32px;
@@ -66,9 +62,9 @@ const List = ({
   </Root>
 )
 
-List.defaultProps = {
-  slides: [],
-  update: () => {}
+List.propTypes = {
+  update: PropTypes.func.isRequired,
+  slides: PropTypes.array.isRequired,
 }
 
-export default connect()(List)
+export default List
