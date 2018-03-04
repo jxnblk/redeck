@@ -1,4 +1,5 @@
 import React from 'react'
+import CSS from 'ok-css'
 
 const meta = [
   {
@@ -8,7 +9,7 @@ const meta = [
 ]
 
 export default props => (
-  <React.Fragment>
+  <head>
     <title>Redeck</title>
     {meta.map(({ name, content }) => (
       <meta
@@ -17,5 +18,6 @@ export default props => (
         content={content}
       />
     ))}
-  </React.Fragment>
+    <CSS />
+  </head>
 )

@@ -1,7 +1,6 @@
 import React from 'react'
 import Refunk from 'refunk/component'
 import { ThemeProvider } from 'styled-components'
-import CSS from 'ok-css'
 import Typography from 'ok-typography'
 import md from 'raw-loader!./deck.md'
 import {
@@ -32,7 +31,6 @@ const App = props => (
         <Head />
         <ThemeProvider theme={theme}>
           <React.Fragment>
-            <CSS />
             <Typography>
               <Carousel index={index}>
                 {slides.map(slide => (
