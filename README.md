@@ -1,4 +1,6 @@
 
+**DEPRECATED: see https://github.com/jxnblk/mdx-deck**
+
 # redeck
 
 React components for creating presentation decks from markdown
